@@ -1,0 +1,3 @@
+// Copyright 2019 Global Phasing Ltd.
+//
+// Fourier transform applied to map coefficients.

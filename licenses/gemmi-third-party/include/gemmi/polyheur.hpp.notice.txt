@@ -1,0 +1,4 @@
+// Copyright 2017-2018 Global Phasing Ltd.
+//
+// Heuristic methods for working with chains and polymers.
+// Also includes a few well-defined functions, such as removal of waters.

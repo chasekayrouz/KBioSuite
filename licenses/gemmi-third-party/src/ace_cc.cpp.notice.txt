@@ -1,0 +1,4 @@
+// Copyright 2025 Global Phasing Ltd.
+//
+// Restraint generation helpers for prepare_chemcomp():
+// chemical adjustments, torsions, chirality, planes, H naming.

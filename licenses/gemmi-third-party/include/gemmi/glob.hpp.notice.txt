@@ -1,0 +1,3 @@
+// Copyright Global Phasing Ltd.
+//
+// Glob pattern matching

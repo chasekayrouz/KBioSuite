@@ -1,0 +1,4 @@
+// Copyright 2025 Global Phasing Ltd.
+//
+// AcedrgTables - COD/CSD-based atom classification and restraint value lookup
+// Port of AceDRG codClassify system to gemmi.

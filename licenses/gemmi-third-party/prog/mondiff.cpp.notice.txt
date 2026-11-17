@@ -1,0 +1,3 @@
+// Copyright 2019 Global Phasing Ltd.
+//
+// Compare two CIF files with monomer restraints.

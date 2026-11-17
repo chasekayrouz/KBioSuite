@@ -1,0 +1,3 @@
+// Copyright 2019 Global Phasing Ltd.
+//
+// Transform MTZ or SF-mmCIF map coefficients to CCP4 map.

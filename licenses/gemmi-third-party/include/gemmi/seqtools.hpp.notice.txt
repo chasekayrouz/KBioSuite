@@ -1,0 +1,3 @@
+// Copyright Global Phasing Ltd.
+//
+// Functions for working with sequences (other than alignment).

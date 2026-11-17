@@ -1,0 +1,3 @@
+// Copyright Global Phasing Ltd.
+//
+// Logger - a tiny utility for passing messages through a callback.

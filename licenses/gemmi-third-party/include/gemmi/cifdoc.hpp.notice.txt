@@ -1,0 +1,4 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// struct Document that represents the CIF file (but can also be
+// read from a different representation, such as CIF-JSON or mmJSON).

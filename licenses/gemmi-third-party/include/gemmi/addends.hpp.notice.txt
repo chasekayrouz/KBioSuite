@@ -1,0 +1,4 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Addends to scattering form factors used in DensityCalculator
+// and StructureFactorCalculator.

@@ -1,0 +1,113 @@
+{
+  "fixture_sha256": "93e824113aa3b3e534680d9b14c77a920ab1b833bac96a3326d66ed8dca39989",
+  "queries": [
+    {
+      "name": "MbtH_CmnN_BGC0000316",
+      "length": 62,
+      "sha256": "ef5ca1637040e884d5d35a47440444adcf393d601e57f94cebeab5260ad7a79f"
+    },
+    {
+      "name": "EF_Tu_P0CE47",
+      "length": 394,
+      "sha256": "3a5811350ecb5497e4d589b13261d141818f75c29599ae713487d1694093e962"
+    },
+    {
+      "name": "NRPS_CmnF_BGC0000316",
+      "length": 1056,
+      "sha256": "0953d558764e5d7a429eacb4c4a19664709c295c875f3055d0c57590f46bc442"
+    },
+    {
+      "name": "cyclase_actinorhodin",
+      "length": 316,
+      "sha256": "f87620b925c765ce8fca3de3e3f85900bb14f80dc42c18e4bea6fa52b4fe632e"
+    },
+    {
+      "name": "synthetic_no_domain",
+      "length": 100,
+      "sha256": "0a88b3745483c20f2a400d9ba46c90b27b2303d6c46d4bb75bdcade961d54d1c"
+    },
+    {
+      "name": "ecoli_U00096.3_control_01",
+      "length": 310,
+      "sha256": "1115ebbacf2d2c044da2899e731558888ef25934fab5d0a86faf8b807e3a72e3"
+    },
+    {
+      "name": "ecoli_U00096.3_control_02",
+      "length": 428,
+      "sha256": "00be9d317c3117f7de53c01dc8d8e70db30349d62ac24940522f72b11195f038"
+    },
+    {
+      "name": "ecoli_U00096.3_control_03",
+      "length": 258,
+      "sha256": "a698d9eed0ddfe74d9c0f715ff6261d13c0d6744f0eac9f9ff7c6e7ae756e585"
+    },
+    {
+      "name": "ecoli_U00096.3_control_04",
+      "length": 476,
+      "sha256": "1a7f63e6c6519ad4741cf5ec9813462d9fe7158c53f9abbc4acef1ab6fd6bb2e"
+    },
+    {
+      "name": "ecoli_U00096.3_control_05",
+      "length": 317,
+      "sha256": "1a62546566024bce4c99d73747a1edf6e64738bffeb58495ce7b18cea764b650"
+    },
+    {
+      "name": "ecoli_U00096.3_control_06",
+      "length": 195,
+      "sha256": "cc3c98c4aafc3aa58800ed8483ce4d19609c3836a68aacbc4484ed589f0b5adb"
+    },
+    {
+      "name": "ecoli_U00096.3_control_07",
+      "length": 188,
+      "sha256": "19483de1b483ba3667f074970d7ad725dbdc0e2338a2220744ed03ad3f909f7e"
+    },
+    {
+      "name": "ecoli_U00096.3_control_08",
+      "length": 237,
+      "sha256": "d5bc87bd550ab0dd0c71bb45b4b3aa657ec67f3d8e1dbba8162684de8ef1b5d2"
+    },
+    {
+      "name": "ecoli_U00096.3_control_09",
+      "length": 161,
+      "sha256": "37eb1f113bf2ee6df327ba659fb0ba2e9e6dc2e2c280e6b5a4ab56853272b985"
+    },
+    {
+      "name": "ecoli_U00096.3_control_10",
+      "length": 134,
+      "sha256": "2a80985ff362876955823467e8cd77e4620e32ced98535cf03bf5d28198ae05e"
+    },
+    {
+      "name": "ecoli_U00096.3_control_11",
+      "length": 376,
+      "sha256": "81410716a543c39635d8c1316e6d28c99dfcd54f2037d823290fc5671fa42bd8"
+    },
+    {
+      "name": "ecoli_U00096.3_control_12",
+      "length": 370,
+      "sha256": "827799ac7d75d243970e72ecd9b9c2ed3f3c4d8696048b06f3647c209e271953"
+    },
+    {
+      "name": "ecoli_U00096.3_control_13",
+      "length": 388,
+      "sha256": "f24f4f103ad40da6d0e4b7b175d222613ae8480570aafe74c6191297e9df2b1e"
+    },
+    {
+      "name": "ecoli_U00096.3_control_14",
+      "length": 301,
+      "sha256": "36fd48c3df5c55755abadfc0f7a5b46d89f1aee35c4b99a1db77e0235e357b4b"
+    },
+    {
+      "name": "ecoli_U00096.3_control_15",
+      "length": 167,
+      "sha256": "63e40620a5883e1bab6ee3abbe8df8f411c50269758c891cac044be5f7699e62"
+    }
+  ],
+  "sources": [
+    "MIBiG 4.0 BGC0000316 CDS translations ABR67757.1 and ABR67749.1 (CC BY 4.0), https://mibig.secondarymetabolites.org/repository/BGC0000316/; archive https://dl.secondarymetabolites.org/mibig/mibig_gbk_4.0.tar.gz SHA-256 43543f9c85316bc44e555dd2c6c37331b1a56150218b204dc14e623ea66e834b",
+    "UniProt P0CE47 E. coli K12 EF-Tu, https://www.uniprot.org/uniprotkb/P0CE47/entry; the same public control is packaged in src/kannotate/resources/smoke.faa",
+    "GenBank CAC44203.1 actinorhodin cyclase, https://www.ncbi.nlm.nih.gov/protein/CAC44203.1; identical sequence in examples/kblast/actinorhodin_cyclase.fasta",
+    "Public E. coli GenBank U00096.3 region 1..30000, https://www.ncbi.nlm.nih.gov/nuccore/U00096.3; downloaded GenBank region SHA-256 0ea3495baa27945b9a59d3a0331e1bc16f1ed4c249306bcae5de092691cd34a4",
+    "Synthetic random protein, random.Random(901), uniform canonical alphabet; no biological claim"
+  ],
+  "purpose": "Coordinate/rendering/latency qualification only; no engine tuning or accuracy estimate"
+}

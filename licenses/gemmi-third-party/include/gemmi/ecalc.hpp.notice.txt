@@ -1,0 +1,3 @@
+// Copyright 2023 Global Phasing Ltd.
+//
+// Normalization of amplitudes F->E ("Karle" approach, similar to CCP4 ECALC).

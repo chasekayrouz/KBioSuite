@@ -1,0 +1,11 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// Read the PDB file format and store it in Structure.
+//
+// Based on the format spec:
+// https://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html
+// + support for two-character chain IDs (columns 21 and 22)
+// + read segment ID (columns 73-76)
+// + read hybrid-36 serial numbers (http://cci.lbl.gov/hybrid_36/)
+// + hybrid-36 sequence id for sequences longer than 9999 (no such examples)
+// + allow for longer REMARK lines (up to 120 characters)

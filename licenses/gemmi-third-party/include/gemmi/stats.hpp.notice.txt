@@ -1,0 +1,3 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// Statistics utilities: classes Covariance, Correlation, DataStats

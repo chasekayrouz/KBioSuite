@@ -1,0 +1,2 @@
+// Copyright 2018 Global Phasing Ltd.
+// Entry point for gemmi utility built as a single program with subcommands.

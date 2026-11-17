@@ -1,0 +1,3 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Interoperability between Model (MX) and SmallStructure (SX).

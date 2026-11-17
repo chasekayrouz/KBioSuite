@@ -1,0 +1,60 @@
+{
+  "clinker_commit": "a126ee5306982858809981b79d6af3663cd2c56c",
+  "files": [
+    {
+      "path": "fixtures/realistic/A. alliaceus CBS 536.65.gbk",
+      "sha256": "dc297a30e0079568701a8223a409f8dcf04510d75481cdb7594470dbb94bac30",
+      "source": "https://raw.githubusercontent.com/gamcil/clinker/a126ee5306982858809981b79d6af3663cd2c56c/examples/A.%20alliaceus%20CBS%20536.65.gbk"
+    },
+    {
+      "path": "fixtures/realistic/A. burnettii locus 1.gbk",
+      "sha256": "5bee208adf44af4407b33a8c4ac7ee82b3f4ff1e7def47c20513a9b082fb966a",
+      "derived_from": "fixtures/upstream/A. burnettii MST-FP2249.gbk"
+    },
+    {
+      "path": "fixtures/realistic/A. burnettii locus 2.gbk",
+      "sha256": "7334fbbd0da3940a1ad87fec2ba62711aaf153026aba61770f9b4d2370398d89",
+      "derived_from": "fixtures/upstream/A. burnettii MST-FP2249.gbk"
+    },
+    {
+      "path": "fixtures/realistic/A. burnettii locus 3.gbk",
+      "sha256": "63591cb4bb27251309cd58559757610cb37ac3f1335146bee4b6e292b585b9ba",
+      "derived_from": "fixtures/upstream/A. burnettii MST-FP2249.gbk"
+    },
+    {
+      "path": "fixtures/realistic/A. mulundensis DSM 5745.gbk",
+      "sha256": "159bc4f6054539d95a2dfce246c377dc7488c250ccf294bf2054bef1afd71eda",
+      "source": "https://raw.githubusercontent.com/gamcil/clinker/a126ee5306982858809981b79d6af3663cd2c56c/examples/A.%20mulundensis%20DSM%205745.gbk"
+    },
+    {
+      "path": "fixtures/realistic/A. versicolor CBS 583.65.gbk",
+      "sha256": "f116d1b6ec7f593b578a489126db73c13397d4de7ae1cfc5fb5b6159b18daace",
+      "source": "https://raw.githubusercontent.com/gamcil/clinker/a126ee5306982858809981b79d6af3663cd2c56c/examples/A.%20versicolor%20CBS%20583.65.gbk"
+    },
+    {
+      "path": "fixtures/realistic/P. vexata CBS 129021.gbk",
+      "sha256": "91d2e56f6de8c104d9a432f49af74b2d1040c19b33c8852e1698b626307b4480",
+      "source": "https://raw.githubusercontent.com/gamcil/clinker/a126ee5306982858809981b79d6af3663cd2c56c/examples/P.%20vexata%20CBS%20129021.gbk"
+    },
+    {
+      "path": "fixtures/synthetic/circular-origin-minus.gbk",
+      "sha256": "84c1b0ca2baeba044360668bf23d701a9dda6059482580c11ecf0bfdee641035",
+      "source": "scripts/kstack/make-fixtures.py"
+    },
+    {
+      "path": "fixtures/synthetic/circular-origin.gbk",
+      "sha256": "bfadbd02ad8d492a8f915743b873b9f3adfe36363130c4af04e16aa239423b63",
+      "source": "scripts/kstack/make-fixtures.py"
+    },
+    {
+      "path": "fixtures/synthetic/edge-cases.gbk",
+      "sha256": "48d50fb5cfbe4a624b1fd2c64215b3496af485026e85ad954ce971e4090abe05",
+      "source": "scripts/kstack/make-fixtures.py"
+    },
+    {
+      "path": "fixtures/upstream/A. burnettii MST-FP2249.gbk",
+      "sha256": "1af5c8e152b7009f77695d79fcec82175e5653a8155df2ada33b07d6cffd8677",
+      "source": "https://raw.githubusercontent.com/gamcil/clinker/a126ee5306982858809981b79d6af3663cd2c56c/examples/A.%20burnettii%20MST-FP2249.gbk"
+    }
+  ]
+}

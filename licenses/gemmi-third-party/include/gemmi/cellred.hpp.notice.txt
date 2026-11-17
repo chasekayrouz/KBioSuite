@@ -1,0 +1,3 @@
+// Copyright 2021 Global Phasing Ltd.
+//
+// Unit cell reductions: Buerger, Niggli, Selling-Delaunay.

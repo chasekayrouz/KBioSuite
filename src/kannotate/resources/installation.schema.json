@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kannotate local database installation metadata",
+  "type": "object",
+  "required": ["schema_version", "kannotate_version", "installed_at", "specification", "files", "disk_bytes", "executables"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "kannotate_version": {"type": "string"},
+    "installed_at": {"type": "string", "format": "date-time"},
+    "specification": {"type": "object", "required": ["version", "assets", "expected_profiles", "database_prefix"]},
+    "files": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+    "disk_bytes": {"type": "integer", "minimum": 0},
+    "executables": {"type": "object", "additionalProperties": {"type": "object", "required": ["path", "version"]}}
+  },
+  "additionalProperties": false
+}

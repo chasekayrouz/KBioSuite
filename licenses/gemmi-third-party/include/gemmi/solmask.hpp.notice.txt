@@ -1,0 +1,3 @@
+// Copyright 2021 Global Phasing Ltd.
+//
+// Flat bulk solvent mask. With helper tools that modify data on grid.

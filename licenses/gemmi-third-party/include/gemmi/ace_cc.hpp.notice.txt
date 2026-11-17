@@ -1,0 +1,3 @@
+// Copyright 2025 Global Phasing Ltd.
+//
+// prepare_chemcomp() — restraint generation pipeline.

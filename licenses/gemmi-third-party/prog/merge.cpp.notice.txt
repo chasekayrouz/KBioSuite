@@ -1,0 +1,4 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Merges multi-record (unmerged) data - I and sigma(I)
+// Uses Inverse-variance weighting.

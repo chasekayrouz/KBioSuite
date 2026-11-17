@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="kblast-token" content="__KBLAST_TOKEN__">
+  <title>Kblast · Gene neighborhoods</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23146c60'/%3E%3Cpath d='M6 10h15l5 4-5 4H6z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="10"/><path d="M7 10h15l6 5-6 5H7z"/><path class="second" d="M29 24H16l-5 4 5 4h13z"/></svg>
+      <span>Kblast</span><span class="version">__VERSION__</span><span class="header-divider"></span><span class="workflow-name">Gene neighborhoods</span>
+    </div>
+    <div class="header-actions"><span id="key-status" class="connection"><i></i> Local workspace</span><button id="history-button" class="quiet">Saved runs <span aria-hidden="true">↗</span></button></div>
+  </header>
+  <main>
+    <div class="page-heading"><div><div class="eyebrow">PROTEIN → GENOMIC CONTEXT</div><h1>Retrieve the neighborhood.</h1><p>Search NR, expand every occurrence, and inspect the annotated context.</p></div><div class="local-label"><span class="local-dot"></span> Runs &amp; results stay on this computer</div></div>
+    <div class="workspace">
+      <aside class="input-column">
+        <section class="card query-card">
+          <div class="card-heading"><h2>Protein query</h2><span id="residue-count" class="mono subtle">0 aa</span></div>
+          <p class="field-help">Paste amino acids or a single-record FASTA.</p>
+          <label class="sr-only" for="sequence">Protein sequence</label>
+          <textarea id="sequence" spellcheck="false" placeholder=">my_protein&#10;M..." autocomplete="off"></textarea>
+          <div class="sequence-actions"><button id="import-button" class="text-button">↑ Import FASTA</button><button id="example-button" class="text-button secondary-text">Use public example</button><input id="file-input" type="file" accept=".fa,.faa,.fasta,.fas,.txt" hidden></div>
+          <div class="input-divider"></div>
+          <div class="number-fields"><div><label for="top-n">NR protein hits</label><input id="top-n" type="number" value="10" min="1" max="5000" step="1" required><span class="field-help">First N subject hits</span></div><div><label for="flank">Flank on each side</label><div class="unit-input"><input id="flank" type="number" value="20000" min="0" max="10000000" step="1000" required><span>bp</span></div><span class="field-help">Upstream + downstream</span></div></div>
+          <label for="email" class="email-label">NCBI contact email <span class="subtle">(recommended)</span></label><input id="email" type="email" placeholder="you@institution.edu" autocomplete="email"><p class="field-help">Contact metadata for scripted NCBI traffic, not a My NCBI login. It does not connect your browser session or add jobs to Recent Results. Open the RID link to view a job.</p>
+          <div id="input-error" class="notice error" role="alert" hidden></div>
+          <div id="input-warnings" class="notice warning" hidden></div>
+          <button id="run-button" class="primary run-button">Run search <span aria-hidden="true">→</span></button>
+          <div class="run-actions"><button id="cancel-button" class="secondary" hidden>Cancel run</button><button id="resume-button" class="secondary" hidden>Resume saved run</button></div>
+          <p class="send-note">Running sends this protein to NCBI BLASTP.</p>
+          <div class="external-actions"><button id="open-ncbi" class="text-button">Open NCBI Protein BLAST ↗</button><button id="copy-query" class="text-button secondary-text">Copy query</button><button id="use-rid" class="secondary">Use existing NCBI RID…</button></div>
+        </section>
+        <section class="method-card"><h3>A literal expansion</h3><div class="method-flow"><span>Protein</span><b>→</b><span>NR protein hits</span><b>→</b><span>Occurrences</span><b>→</b><span>Contexts</span></div><p>Every retrievable occurrence is kept, including repeated regions. Contexts use native orientation and clip at record boundaries.</p><details><summary>Search settings &amp; coordinates</summary><p>Kblast submissions: standard BLASTP · NR · E-value 0.05 · word size 5 · gaps 11/1 · automatic short-query adjustment. NCBI defaults supply BLOSUM62, composition statistics 2, and filtering off. External RIDs retain their returned parameters.</p><p class="mono formula">start = CDS low − flank<br>end = CDS high + flank</p><p>Coordinates are 1-based inclusive. Circular records are clipped without wrapping across the origin.</p><p>NCBI is a live database. Saved settings and raw responses document each run; future searches may return different hits.</p></details></section>
+      </aside>
+      <section class="results-column" aria-label="Search results">
+        <div class="results-top"><div><h2>Workflow preview</h2><p id="result-subtitle">Three stages, one traceable workflow.</p></div><button id="export-all" class="secondary" disabled>↓ Export all</button></div>
+        <div class="counts-row"><div><span id="hit-count">—</span><label>BLAST hits</label></div><b>→</b><div><span id="occurrence-count">—</span><label>genomic occurrences</label></div><b>→</b><div><span id="context-count">—</span><label>retrieved contexts</label></div></div>
+        <div id="run-status" class="run-status" hidden><div class="status-line"><span id="run-status-label" class="status-badge"></span><a id="run-id" class="mono subtle" target="_blank" rel="noopener noreferrer"></a></div><p id="run-message" aria-live="polite"></p><p id="blast-lifecycle" class="field-help" aria-live="polite"></p><p id="rid-provenance" class="field-help" hidden></p><div id="progress-line" class="progress-line"><i></i></div><div id="run-error" class="notice error" hidden></div><div id="waiting-recovery" class="notice warning" hidden><p>NCBI is still processing this scripted BLAST request. Interactive NCBI searches may complete sooner. Keep waiting, cancel locally, or search in your browser and paste its RID here. The original RID stays saved and its remote job continues.</p><button id="waiting-open-ncbi" class="secondary">Open NCBI Protein BLAST ↗</button></div><div id="recovery" hidden><button id="switch-rid" class="secondary">Use / switch to existing RID…</button><button id="resume-original-rid" class="text-button" hidden>Resume original RID</button><p class="field-help">Retrieve another NCBI result for this query without submitting it again. Previous RIDs remain in provenance.</p></div></div>
+        <div class="card preview-card">
+          <div class="tabs" role="tablist" aria-label="Preview stages"><button id="tab-hits" role="tab" aria-selected="true" aria-controls="panel-hits" data-tab="hits"><span class="step">1</span> BLAST hits <span id="tab-hit-count" class="tab-count">0</span></button><button id="tab-occurrences" role="tab" aria-selected="false" aria-controls="panel-occurrences" data-tab="occurrences"><span class="step">2</span> Occurrences <span id="tab-occurrence-count" class="tab-count">0</span></button><button id="tab-contexts" role="tab" aria-selected="false" aria-controls="panel-contexts" data-tab="contexts"><span class="step">3</span> Contexts <span id="tab-context-count" class="tab-count">0</span></button></div>
+          <section id="panel-hits" class="panel" role="tabpanel" aria-labelledby="tab-hits"><div class="panel-intro"><h3>Returned protein subjects</h3><p>NCBI rank order. Coverage is the union of query positions across all HSPs. Identity and bit score are HSP maxima; E-value is the minimum. All HSPs are saved in provenance.</p></div><div id="hits-content"></div></section>
+          <section id="panel-occurrences" class="panel" role="tabpanel" aria-labelledby="tab-occurrences" hidden><div class="panel-intro"><h3>Every mapped occurrence</h3><p>One row per genomic occurrence from IPG or NCBI nucleotide links, with native CDS coordinates. Complete raw IPG responses are preserved in provenance. Click a successful row to inspect its context.</p></div><div id="occurrences-content"></div></section>
+          <section id="panel-contexts" class="panel" role="tabpanel" aria-labelledby="tab-contexts" hidden><div class="context-toolbar"><div><h3>Annotated genomic contexts</h3><p id="selection-label">All resolved contexts are selected by default.</p></div><button id="export-selected" class="secondary" disabled>↓ Export selected</button></div><div id="contexts-content"></div></section>
+        </div>
+        <p class="results-footnote">Exports include individual &amp; multi-record GenBank, protein FASTA, metadata TSV, and provenance.</p>
+      </section>
+    </div>
+  </main>
+  <div id="toast" role="status" hidden></div>
+  <dialog id="history-dialog"><div class="dialog-heading"><div><h2>Saved runs</h2><p>Local checkpoints, ready to inspect or resume.</p></div><button id="close-history" class="quiet" aria-label="Close saved runs">×</button></div><div id="history-content"></div><p id="data-directory" class="mono subtle"></p></dialog>
+  <dialog id="rid-dialog"><div class="dialog-heading"><div><h2 id="rid-dialog-title">Use existing NCBI RID</h2><p id="rid-dialog-scope"></p></div><button id="close-rid" class="quiet" aria-label="Close RID import">×</button></div><form id="rid-form"><label for="existing-rid">NCBI RID</label><input id="existing-rid" required pattern="[A-Z0-9][A-Z0-9\-]{5,63}" maxlength="64" autocomplete="off" spellcheck="false" placeholder="Paste the RID from NCBI"><label for="rid-source">Result source</label><select id="rid-source"><option value="browser">NCBI browser search</option><option value="external">Other external NCBI search</option></select><p class="field-help">Use a single protein query against true <strong>nr</strong>. Kblast checks the returned program, database, length and available aligned query residues before processing hits. XML2 may omit unaligned query residues; confirm that this RID belongs to the same protein.</p><p class="field-help">Different search parameters are accepted and preserved. Top N consumes the available returned hits; Kblast does not extend the remote search. Switching stops local work after in-flight requests finish; it does not cancel an NCBI job.</p><div id="rid-error" class="notice error" role="alert" hidden></div><button id="adopt-rid" class="primary" type="submit">Retrieve existing result</button></form></dialog>
+</body>
+</html>

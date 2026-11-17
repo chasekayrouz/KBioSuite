@@ -1,0 +1,141 @@
+LOCUS       scaffold_761            3501 bp    DNA     linear   UNA 24-APR-2019
+DEFINITION  Aspergillus sp. CLMG-2019a.
+ACCESSION   urn.local...3a-adwlna2
+VERSION     urn.local...3a-adwlna2
+KEYWORDS    .
+SOURCE      Aspergillus sp. CLMG-2019a
+  ORGANISM  Aspergillus sp. CLMG-2019a
+            Eukaryota; Fungi; Dikarya; Ascomycota; Pezizomycotina;
+            Eurotiomycetes; Eurotiomycetidae; Eurotiales; Aspergillaceae;
+            Aspergillus.
+FEATURES             Location/Qualifiers
+     source          1..3501
+                     /organism="Aspergillus sp. CLMG-2019a"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:2508778"
+                     /label="source Aspergillus sp. CLMG-2019a"
+     CDS             39..1406
+                     /locus_tag="ETB97_011798"
+                     /note="EggNog:ENOG41KOG0157; COG:Q; GO_function: GO:0005506
+                     - iron ion binding [Evidence IEA]; GO_function: GO:0016705
+                     - oxidoreductase activity, acting on paired donors, with
+                     incorporation or reduction of molecular oxygen [Evidence
+                     IEA]; GO_function: GO:0020037 - heme binding [Evidence
+                     IEA]; GO_process: GO:0055114 - oxidation-reduction process
+                     [Evidence IEA]"
+                     /codon_start=1
+                     /product="hypothetical protein"
+                     /protein_id="ncbi:ETB97_011798-T1"
+                     /db_xref="InterPro:IPR001128"
+                     /db_xref="InterPro:IPR036396"
+                     /db_xref="PFAM:PF00067"
+                     /translation="MKDVPNKGIIHCRGILNGERLIVSSPTALAKIASDNYTFIKPMAI
+                     KLLAGRVLGMGLVLTERDEHKQQRKLFLPPFAPKHIRDLYPTFWRKSREVTERMGDEIH
+                     ATGAGNGVFEIGEWAARVALDIITLSTMGKDFGSVRDADAPLAKVYHTVLQPTLGHVVI
+                     AVLKNFLPARLVEALPLRSNRHQGDAYDTIRGVCRDLLREKKDQLAGHHLGGKDILSVC
+                     LRYEDIAGVDEEEVINQMTTILGAGHETISVGITWAIYMLCLHRDWQARLREEVRATLP
+                     SPDRAQESASSADVERMPLMRAFLEEVLRWYPPIPMTMREPLVDTELDGQYVPRGTRIV
+                     VPIKAINREERYWGPDAKRFSPSRWLKNDREFNPSGGVSSKYGYLSFMHGPRSCVASEF
+                     ARAEMACVVSAWVGRFDLDLSDEHFRDEENMRTSNGNFSGKPLEGLYVRAQVLEGW"
+                     /label="hypothetical protein CDS"
+     gene            39..1406
+                     /locus_tag="ETB97_011798"
+                     /label="gene"
+     mRNA            39..1406
+                     /locus_tag="ETB97_011798"
+                     /product="hypothetical protein"
+                     /label="hypothetical protein mRNA"
+     CDS             complement(join(1612..2618,2692..2800))
+                     /gene="ANKRD44_2"
+                     /locus_tag="ETB97_011799"
+                     /note="EggNog:ENOG410V7QW; COG:M; GO_function: GO:0005515 -
+                     protein binding [Evidence IEA]"
+                     /codon_start=1
+                     /product="Ankyrin repeat domain-containing protein 44"
+                     /protein_id="ncbi:ETB97_011799-T1"
+                     /db_xref="InterPro:IPR002110"
+                     /db_xref="InterPro:IPR020683"
+                     /db_xref="InterPro:IPR036770"
+                     /db_xref="PFAM:PF00023"
+                     /db_xref="PFAM:PF12796"
+                     /db_xref="PFAM:PF13606"
+                     /db_xref="PFAM:PF13637"
+                     /db_xref="PFAM:PF13857"
+                     /translation="MTTPVKGTSPGPDEWHHLEDLNQRRRIQNRLSQRNRRTNLRNQVA
+                     QGQKQETAKHSEPKQNRQLFWVPPNSSTAKGKLVTTKGNKLESPRPPDPVTPPGRWPEI
+                     WHASLHEKPSGGALHGDLGDDMDSCWINTLIRSPVLPIDDDMLSCTPPIPTFDTTMTLD
+                     AAPVPTAMPVRDGGLSEGNTTHIQVPSANGVELGRTGGCKAPQDMHFTVQPQQPMTSIH
+                     TDKDRRDHFFGYAALHVAASRGHLAVVQLLTERGIPVDQLSSENETALHLAAEQGHCAV
+                     AHYLLERGADPHRGNQYGETALHVAAGHGHCDIVRLLFSYLPDLNIVDRNGHTALLRAV
+                     AEGHVDVVRVLLERGMDAGMKVGWPLDQKSI"
+                     /label="ANKRD44 2 CDS"
+     gene            complement(1612..2800)
+                     /gene="ANKRD44_2"
+                     /locus_tag="ETB97_011799"
+                     /label="ANKRD44 2 gene"
+     mRNA            complement(join(1612..2618,2692..2800))
+                     /gene="ANKRD44_2"
+                     /locus_tag="ETB97_011799"
+                     /product="Ankyrin repeat domain-containing protein 44"
+                     /label="ANKRD44 2 mRNA"
+ORIGIN
+        1 ccccccggga tgaagggttg aaaagtaaaa acaacaggat gaaagatgtc cccaataagg
+       61 gtatcatcca ttgtcgaggc atcctgaatg gcgagcgtct catagtgtcc tcgcccacag
+      121 cgcttgccaa gatcgccagt gacaactaca ccttcatcaa gcccatggcg atcaagctgc
+      181 tagccggccg cgtgctgggc atgggacttg tcctgaccga gcgcgacgag cacaagcagc
+      241 agcgcaagct cttcctgccg ccgttcgccc cgaagcacat tcgggacctc tacccaacct
+      301 tctggcggaa gagccgcgag gttacagaac ggatgggcga cgagatccac gccacggggg
+      361 ccgggaatgg cgttttcgag attggtgaat gggcagcgcg cgtggcgctg gatatcatca
+      421 ccctgtcgac catgggcaag gattttggct cggttcgcga tgccgacgcg ccgctggcta
+      481 aggtgtacca cactgtgttg caaccgactt tgggccatgt ggtgatcgcc gtgctgaaga
+      541 atttcctgcc cgcacgactg gtggaggccc taccgctgcg gtctaatcgg catcagggag
+      601 acgcctacga cacgatacgc ggggtgtgtc gggacctact gagggagaag aaggaccagc
+      661 tggcaggcca ccatctaggc ggcaaggata tcctgagcgt gtgcctgcga tacgaggaca
+      721 ttgccggcgt cgacgaggag gaggtcatca accaaatgac gaccatcctg ggagcaggcc
+      781 atgagaccat ctcggtgggc atcacctggg ctatctatat gctctgcttg caccgggact
+      841 ggcaggcccg gctgcgcgag gaggtgcgtg ccacactgcc ctcccccgac cgcgcgcagg
+      901 agtctgcgtc cagcgccgat gtcgagcgta tgccgctgat gcgcgccttt ctggaggagg
+      961 tgctgcggtg gtatccgccc atccccatga ccatgcgtga gccactggtc gatacggagc
+     1021 tggatggcca gtacgtgccc cggggcacgc gcatcgtggt ccccatcaag gctatcaacc
+     1081 gtgaggagag gtattggggg cccgatgcga aacggtttag cccgtcgcgg tggctgaaga
+     1141 acgaccgtga gtttaacccc agtggtgggg tatcgagcaa gtacggctat ctgtctttca
+     1201 tgcacggccc tcgcagctgc gtggcgtccg aatttgcccg cgctgagatg gcatgcgtgg
+     1261 tatcggcgtg ggtaggacgc tttgacttgg acctttcgga cgagcacttt cgggacgagg
+     1321 agaatatgag gacgtcgaac ggcaattttt cagggaagcc cctagaaggg ctgtatgtgc
+     1381 gggcacaggt gctggagggc tggtagtcgt aggagagtag gcgttgatca cgagatggct
+     1441 ggcaatttta gaatacaatc agatatcaca gcttgaccaa atgtaatcaa taacaccggg
+     1501 acccaaaccc tatgtacata aaaagtactg ctctgtatcg aacaagaaag taggaaacat
+     1561 acaggaattc cactgttctt catgtccctc cacggtctct gtctagatca atcaaatgct
+     1621 tttttgatcc aacggccacc ctaccttcat tccagcgtcc atgccacgct ccagcaacac
+     1681 ccgcacgaca tcgacatgcc cctccgctac tgcccgaagg agcgccgtgt ggccattgcg
+     1741 atccacaata ttcaaatccg gtagatagct gaaaagcagg cggacaatat cgcaatgtcc
+     1801 atgacccgcg gcgacgtgca gggccgtttc gccatactgg ttgccacggt gtgggtcagc
+     1861 cccacgctcc agcaggtaat gtgcgacagc acaatggccc tgctccgctg ccagatgcag
+     1921 ggctgtctcg ttctcactgc tcaactgatc gaccgggatt ccccgctccg tgagcagctg
+     1981 cacaacagca agatggcccc gactggcagc cacgtggagt gctgcatatc cgaagaagtg
+     2041 atccctgcgg tccttgtccg tgtgaatact ggtcattggc tgttgtggtt gcactgtgaa
+     2101 gtgcatatct tgtggtgcct tgcagcctcc cgtgcgacct aactcgactc cgttcgccga
+     2161 gggaacttga atatgcgttg tgttcccctc ggatagccca ccatccctca ccggcattgc
+     2221 cgtcggtact ggtgcggcat ccaacgtcat ggtcgtgtcg aatgtaggta tcgggggcgt
+     2281 gcagctcagc atatcgtcgt caataggcag gacgggcgag cggataagcg tgttgatcca
+     2341 gcaggaatcc atgtcatctc ccaggtcacc gtgtaatgca ccacccgacg gtttctcgtg
+     2401 cagcgaagcg tgccagatct ccggccaacg accagggggc gtcactggat ctggggggcg
+     2461 aggcgactcg agcttgttac cttttgtcgt caccaatttc ccctttgcgg tagaggaatt
+     2521 aggtggcacc cagaagagct gtcggttctg cttgggctcg gagtgcttgg ccgtttcttg
+     2581 cttttggccc tgggctacct ggttgcgcag gttggttcct taaactgcgg ttcagtcggt
+     2641 gatgcggcta atctaacggc aactatctag atagttagat ggtacactta cgccgattcc
+     2701 gctgcgatag gcggttctgg atccgtcgcc tctgattcaa atcctccaga tggtgccact
+     2761 catcggggcc gggagaggtt cccttgacgg gagtggtcat ggccggggca ccgattaagc
+     2821 tacgcagggg gggtttacga actcgtcggg cgtgacttgc tataagtatg gcttggcaat
+     2881 attaagtctc agagtagaaa ggacagtgtg gcaatcttga taatggctga tgactaggtt
+     2941 cggagcgttg ggggttccaa atgaatccag ggcgagagga attataattg catcagtcgc
+     3001 cctgaccatg gacacgagaa atactaccaa taaatgacta agtatcattc taacaggggg
+     3061 ataatgcagc taacaatagc atctagtgtc tagactacat aggcggattt aacctgcatg
+     3121 attgaacgtc acagtaacaa gggtggcctt acaaagtatg aatatagagc gtgtgagggt
+     3181 gaatcatggt atcactcatg taggaattag gctgaaatca tctcgcgtgg tagcaggggg
+     3241 atgaagagtt tctggtctga cgagagaagt atagcaagac aagatggtta gttcgaaagc
+     3301 tcactggacc aatgaagatg tgcttatggt gggctgcaga gtgaatacta ctacatcttg
+     3361 actccaattt ctctcgaatg gcccccataa gtcaagacaa agtggggcta gacttaacca
+     3421 cgaagctaac gtgttcgata gatccaacca caaggtacat tgggatgtgt tcgttggccc
+     3481 cccccccccc cccccccccc c
+//

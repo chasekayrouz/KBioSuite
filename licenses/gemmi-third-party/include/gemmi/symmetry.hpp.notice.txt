@@ -1,0 +1,6 @@
+// Copyright 2017-2019 Global Phasing Ltd.
+//
+// Crystallographic Symmetry. Space Groups. Coordinate Triplets.
+//
+// If this is all that you need from Gemmi you can just copy this file,
+// src/symmetry.cpp fail.hpp and LICENSE.txt to your project.

@@ -1,0 +1,2 @@
+// Author: Martin C. Frith 2010
+// SPDX-License-Identifier: MPL-2.0

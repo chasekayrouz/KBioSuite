@@ -1,0 +1,5 @@
+/*
+ * extractA3M adapted from HH-suite 3.0: a3m_compress.h
+ * Original Author: meiermark
+ * Relicensed with permission from jsoeding to MIT
+ */

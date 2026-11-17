@@ -1,0 +1,3 @@
+// Copyright 2019 Global Phasing Ltd.
+//
+// Tools to prepare a grid with values of electron density of a model.

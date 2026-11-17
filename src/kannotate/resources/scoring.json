@@ -1,0 +1,9 @@
+{
+  "version": "1.1.0",
+  "significance_cap": 300.0,
+  "coverage_base": 0.5,
+  "coverage_weight": 0.5,
+  "coverage_bonus": 5.0,
+  "engine_offsets": {"hmm": 0.0, "rps": 0.0},
+  "default_min_score": 6.0
+}

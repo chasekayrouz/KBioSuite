@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<IPGReportSet xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://www.ncbi.nlm.nih.gov/data_specs/schema/other/seq_report/IPGReportSet.xsd">
+
+<IPGReport  ipg="722037354" product_acc="WP_320672066.1">
+<Product  accver="WP_320672066.1" name="hypothetical protein" taxid="3095358" slen="291" org="Patulibacter defluvii" kingdom_taxid="2" kingdom="Bacteria"/>
+<ProteinList>
+<Protein  accver="WP_320672066.1" source="RefSeq" name="hypothetical protein" taxid="3095358" org="Patulibacter defluvii" kingdom_taxid="2" kingdom="Bacteria" priority="0"/></ProteinList>
+<Statistics  prot_count="1" nuc_count="0" assmb_count="0"/></IPGReport></IPGReportSet>

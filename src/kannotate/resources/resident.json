@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "qualified_identity": {
+    "backend": "pyhmmer-resident-mac-v1",
+    "package": {
+      "version": "0.12.3",
+      "content_sha256": "79275088d0dcc4d5715f68022906d7388eb23fd2244e67434ac6fa12edf372bc"
+    },
+    "cli_sha256": "794a1b2cb45f55015ccd6b89573edd831016e8d1e8f9cb2040a89e0fe99efee3",
+    "reference_sha256": "b2ff6f891a9483af402b637cd7fc0e9d25cddb443ac8a332e7f7d26057d6d644",
+    "arguments": [
+      "--noali",
+      "-E",
+      "0.01",
+      "--domE",
+      "0.01"
+    ],
+    "pipeline": {
+      "E": 0.01,
+      "domE": 0.01,
+      "incE": 0.01,
+      "incdomE": 0.01,
+      "F1": 0.02,
+      "F2": 0.001,
+      "F3": 1e-05,
+      "bias_filter": true,
+      "null2": true,
+      "seed": 42,
+      "Z": null,
+      "domZ": null,
+      "T": null,
+      "domT": null,
+      "incT": null,
+      "incdomT": null,
+      "bit_cutoffs": null
+    },
+    "profiles": 30134
+  },
+  "qualification": {
+    "platform": "macOS arm64 (Apple silicon), Python 3.14.7",
+    "evidence": "Maintainer qualification reports, identified by the SHA-256 digests below",
+    "reports": {
+      "qualify-ordinary": "8683531b56eaeee83255dc599c7082db227dde81b17e9f815bb85579d1173e71",
+      "qualify-long": "e76208afbc917467e0e801396b06de400dfee2ea019477b99dbe3fcf3796d117",
+      "raw-audit": "466ac65d3ece352e1abb7c44dcaf19343d44cad3d6e991718db376cb7c639a91"
+    },
+    "comparisons": "All reported HMMER domain fields, all raw CDD/alignment fields, complete hit/product/score data; batch/single and long/alphabet controls; exact equality without tolerances or FP changes."
+  }
+}

@@ -1,0 +1,4 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// Bidirectional iterators (over elements of any container) that can filter,
+// uniquify, group, or iterate with a stride.

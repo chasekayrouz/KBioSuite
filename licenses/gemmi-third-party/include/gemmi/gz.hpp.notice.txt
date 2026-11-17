@@ -1,0 +1,3 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// Functions for transparent reading of gzipped files. Uses zlib.

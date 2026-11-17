@@ -1,0 +1,3 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// Utilities. Mostly for working with strings and vectors.

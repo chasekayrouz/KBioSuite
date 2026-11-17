@@ -1,0 +1,4 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// Part of gemmi-validate that does extra validation for cif files from
+// the Refmac monomer dictionary ("gemmi validate --monomer").

@@ -1,0 +1,11 @@
+# Preserve original public GenBank bytes, including ORIGIN/continuation padding.
+tests/kstack/fixtures/**/*.gbk whitespace=-blank-at-eol
+# Preserve the upstream scientific-tool notice verbatim.
+docs/kstack/LICENSE.mmseqs.md whitespace=-blank-at-eof
+# Preserve the upstream 3Dmol.js license text verbatim, including trailing spaces.
+src/kmatch/static/vendor/3Dmol-LICENSE whitespace=-blank-at-eol,-blank-at-eof
+# Keep hash-verified third-party notices byte-for-byte, including upstream whitespace.
+licenses/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+# These upstream notice blocks use seven equals signs as ordinary separators.
+licenses/3dmol/src/ProteinSurface4.notice.txt conflict-marker-size=32
+licenses/gemmi-third-party/third_party/stb_sprintf.h.notice.txt conflict-marker-size=32

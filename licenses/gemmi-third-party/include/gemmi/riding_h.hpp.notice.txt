@@ -1,0 +1,3 @@
+// Copyright 2018-2022 Global Phasing Ltd.
+//
+// Place hydrogens according to bond lengths and angles from monomer library.

@@ -1,0 +1,117 @@
+{
+  "version": "1.1.0",
+  "generic_composites_enabled": false,
+  "min_protein_length": 700,
+  "min_domain_score": 15.0,
+  "min_domain_span": 80,
+  "max_overlap_fraction": 0.2,
+  "groups": {
+    "nrps_adenylation": [
+      "PF00501",
+      "AMP-binding"
+    ],
+    "nrps_condensation": [
+      "PF00668",
+      "Condensation"
+    ],
+    "pks_ketosynthase": [
+      "PF00109",
+      "ketoacyl-synt",
+      "PF02801",
+      "Ketoacyl-synt_C"
+    ],
+    "pks_acyltransferase": [
+      "PF00698",
+      "Acyl_transf_1"
+    ],
+    "pks_ketoreductase": [
+      "PF08659",
+      "KR"
+    ],
+    "carrier": [
+      "PF00550",
+      "PP-binding"
+    ]
+  },
+  "rules": [
+    {
+      "requires": [
+        "nrps_adenylation",
+        "nrps_condensation",
+        "pks_ketosynthase",
+        "pks_acyltransferase"
+      ],
+      "product": "hybrid nonribosomal peptide synthetase-polyketide synthase"
+    },
+    {
+      "requires": [
+        "nrps_condensation",
+        "pks_ketosynthase",
+        "pks_acyltransferase"
+      ],
+      "product": "hybrid nonribosomal peptide synthetase-polyketide synthase"
+    },
+    {
+      "requires": [
+        "nrps_adenylation",
+        "nrps_condensation",
+        "pks_ketosynthase",
+        "pks_ketoreductase",
+        "carrier"
+      ],
+      "min_protein_length": 1500,
+      "ordered": [
+        "pks_ketosynthase",
+        "pks_ketoreductase",
+        "carrier"
+      ],
+      "product": "hybrid nonribosomal peptide synthetase-polyketide synthase"
+    },
+    {
+      "requires": [
+        "nrps_condensation",
+        "pks_ketosynthase",
+        "pks_ketoreductase",
+        "carrier"
+      ],
+      "min_protein_length": 1500,
+      "ordered": [
+        "pks_ketosynthase",
+        "pks_ketoreductase",
+        "carrier"
+      ],
+      "product": "hybrid nonribosomal peptide synthetase-polyketide synthase"
+    },
+    {
+      "requires": [
+        "nrps_adenylation",
+        "nrps_condensation"
+      ],
+      "product": "nonribosomal peptide synthetase"
+    },
+    {
+      "requires": [
+        "pks_ketosynthase",
+        "pks_acyltransferase"
+      ],
+      "product": "polyketide synthase"
+    },
+    {
+      "requires": [
+        "pks_ketosynthase",
+        "pks_ketoreductase",
+        "carrier"
+      ],
+      "min_protein_length": 1500,
+      "ordered": [
+        "pks_ketosynthase",
+        "pks_ketoreductase",
+        "carrier"
+      ],
+      "product": "polyketide synthase"
+    }
+  ],
+  "group_min_domain_span": {
+    "carrier": 50
+  }
+}

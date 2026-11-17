@@ -1,0 +1,3 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// Create cif::Document (for PDBx/mmCIF file) from Structure.

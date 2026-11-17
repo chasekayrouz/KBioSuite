@@ -1,0 +1,3 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Contact search, based on NeighborSearch from neighbor.hpp.

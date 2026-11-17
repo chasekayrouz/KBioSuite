@@ -1,0 +1,14 @@
+// Formatting library for C++ - chrono support
+//
+// Copyright (c) 2012 - present, Victor Zverovich
+// All rights reserved.
+//
+// For the license information refer to format.h.
+
+
+// For conversion between std::chrono::durations without undefined
+// behaviour or erroneous results.
+// This is a stripped down version of duration_cast, for inclusion in fmt.
+// See https://github.com/pauldreik/safe_duration_cast
+//
+// Copyright Paul Dreik 2019

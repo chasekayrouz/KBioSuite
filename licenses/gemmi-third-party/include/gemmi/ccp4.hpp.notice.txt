@@ -1,0 +1,3 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// CCP4 format for maps and masks.

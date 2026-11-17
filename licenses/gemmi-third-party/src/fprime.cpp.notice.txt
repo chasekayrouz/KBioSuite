@@ -1,0 +1,17 @@
+// C++ implementation of Cromer-Liberman calculation of anomalous scattering
+// factors, with corrections from Kissel & Pratt, Acta Cryst. A46, 170 (1990).
+// Single file. No dependencies.
+//
+// Based on the Fortran implementation from Larch [1] (BSD license),
+// which is based on the Cowan-Brennan routines [2],
+// which was based on the original code from Don T. Cromer [3].
+// [1] https://github.com/xraypy/xraylarch directory dylibs/CromerLiberman
+// [2] Rev. Sci. Instrum. 63, 850 (1992), https://doi.org/10.1063/1.1142625
+// [3] Acta Cryst. A37, 267 (1981), https://doi.org/10.1107/S0567739481000600
+//
+// Note: Matthew Newville, who maintains Larch, recommended to use
+// data from Chris Chantler instead. This data is available from
+// https://github.com/xraypy/XrayDB and from the NIST website.
+// Use that for better accuracy. This implementation is a trade-off
+// between the accuracy and the compactness of data (so we don't need
+// separate data files).

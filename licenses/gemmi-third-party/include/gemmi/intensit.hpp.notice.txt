@@ -1,0 +1,5 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Class Intensities that reads multi-record data from MTZ, mmCIF or XDS_ASCII
+// and merges it into mean or anomalous intensities.
+// It can also read merged data.

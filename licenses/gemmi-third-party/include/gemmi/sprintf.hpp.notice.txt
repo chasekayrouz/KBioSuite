@@ -1,0 +1,3 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// interface to stb_sprintf: snprintf_z, to_str(float|double)

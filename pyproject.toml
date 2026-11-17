@@ -1,0 +1,80 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kbiosuite"
+dynamic = ["version"]
+description = "Independent protein bioinformatics apps for Apple silicon Macs: Kblast, Kannotate, Kstack and Kmatch"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "licenses/**"]
+requires-python = ">=3.14,<3.15"
+dependencies = [
+  "biopython>=1.85,<2",
+  "flask>=3.1,<4",
+  "gemmi>=0.7,<0.8",
+  "numpy>=2,<3",
+  "requests>=2.32,<3",
+  "python-dotenv>=1.1,<2",
+  "openpyxl>=3.1.5,<4",
+  "psutil>=7,<8",
+  "pywebview>=6,<7; sys_platform == 'darwin'",
+  "pyhmmer==0.12.3 ; platform_machine == 'arm64' and sys_platform == 'darwin'",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.14,<1", "pyinstaller>=6.16,<7"]
+
+[project.scripts]
+kbiosuite = "kbiosuite.launcher:main"
+kblast = "kblast.app:main"
+kannotate = "kannotate.cli:main"
+kannotate-gui = "kannotate.gui:main"
+kstack = "kstack.cli:main"
+kmatch = "kmatch.cli:main"
+kmatch-gui = "kmatch.gui:main"
+
+[tool.hatch.version]
+path = "src/kbiosuite/version.py"
+
+[tool.uv]
+python-preference = "only-managed"
+cache-keys = [{ file = "pyproject.toml" }, { file = "src/kbiosuite/version.py" }, { dir = "src" }]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kbiosuite", "src/kblast", "src/kannotate", "src/kstack", "src/kmatch"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"licenses" = "kbiosuite/notices"
+
+[tool.hatch.build.targets.sdist]
+include = ["/src", "/apps", "/tests", "/scripts", "/examples", "/resources", "/licenses", "/packaging", "/LICENSE", "/README.md", "/docs/user-guide.md", "/docs/kblast/methods.md", "/docs/kstack/project-format.md", "/docs/kmatch/af3.md", "/docs/kstack/LICENSE.biopython.rst", "/docs/kstack/LICENSE.mmseqs.md", "/pyproject.toml", "/uv.lock", "/.python-version", "/.env.example"]
+exclude = ["**/cache/**", "**/results/**", "**/.build/**"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+# PyMOL executes this standalone runner with its own interpreter (Python 3.10 here); the
+# external Boltz/AF3 environments (Python 3.12) run the engine runner and Boltz profiler.
+[tool.ruff.per-file-target-version]
+"src/kmatch/pymol_runner.py" = "py310"
+"src/kmatch/engine_runner.py" = "py312"
+"scripts/kmatch/boltz_profile.py" = "py312"
+# The source-state checker also runs under macOS's system Python.
+"scripts/check_source_state.py" = "py39"
+
+# Preserve imported scientific-loop semantics and compact native-backend style.
+[tool.ruff.lint.per-file-ignores]
+"src/kannotate/**" = ["B905"]
+"tests/**" = ["E501"]
+"src/kstack/**" = ["E501", "E701", "E702", "E731", "I", "UP", "B"]
+"tests/kstack/**" = ["E701", "E702", "I", "UP", "B"]
+"scripts/kstack/**" = ["E501", "E701", "E702", "I", "UP", "B"]

@@ -1,0 +1,3 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// BondIndex: for checking which atoms are bonded, calculating graph distance.

@@ -1,0 +1,3 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// Elements from the periodic table.

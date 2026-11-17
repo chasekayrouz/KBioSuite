@@ -1,0 +1,8 @@
+/**
+ *
+ * @file  single and pairwise reading of sequences from FASTA/FASTQ files
+ *
+ * (c) 2017-2023 André Müller (mail@andremueller-online.de)
+ * MIT License
+ *
+ *****************************************************************************/

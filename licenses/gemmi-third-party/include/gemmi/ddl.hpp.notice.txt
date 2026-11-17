@@ -1,0 +1,3 @@
+// Copyright Global Phasing Ltd.
+//
+// Using DDL1/DDL2 dictionaries to validate CIF/mmCIF files.

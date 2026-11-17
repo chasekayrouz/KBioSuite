@@ -1,0 +1,272 @@
+{
+  "format": "Kstack",
+  "schema_version": 1,
+  "app_version": "0.2.0",
+  "metadata": {
+    "title": "Test",
+    "created": "2026-01-01",
+    "modified": "2026-01-01"
+  },
+  "clusters": [
+    {
+      "id": "a",
+      "name": "a",
+      "length": 10000,
+      "cds": [
+        {
+          "id": "a0",
+          "cluster_id": "a",
+          "group_id": "h_a0",
+          "segments": [
+            {
+              "start": 1000,
+              "end": 1300,
+              "strand": 1
+            }
+          ],
+          "cds_length": 300,
+          "strand": 1,
+          "protein": "MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "protein_length": 100,
+          "gene": "0",
+          "product": "enzyme",
+          "locus_tag": "",
+          "warnings": [],
+          "partial": false,
+          "qualifiers": {},
+          "location": "1000",
+          "translation_source": "translation",
+          "origin_spanning": false
+        },
+        {
+          "id": "a1",
+          "cluster_id": "a",
+          "group_id": "h_a1",
+          "segments": [
+            {
+              "start": 5000,
+              "end": 5300,
+              "strand": -1
+            }
+          ],
+          "cds_length": 300,
+          "strand": -1,
+          "protein": "MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "protein_length": 100,
+          "gene": "1",
+          "product": "enzyme",
+          "locus_tag": "",
+          "warnings": [],
+          "partial": false,
+          "qualifiers": {},
+          "location": "5000",
+          "translation_source": "translation",
+          "origin_spanning": false
+        }
+      ],
+      "source_name": "a.gbk",
+      "accession": "a",
+      "description": "Synthetic test cluster",
+      "topology": "linear",
+      "annotations": {},
+      "warnings": []
+    },
+    {
+      "id": "b",
+      "name": "b",
+      "length": 10000,
+      "cds": [
+        {
+          "id": "b0",
+          "cluster_id": "b",
+          "group_id": "h_a0",
+          "segments": [
+            {
+              "start": 2000,
+              "end": 2300,
+              "strand": -1
+            }
+          ],
+          "cds_length": 300,
+          "strand": -1,
+          "protein": "MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "protein_length": 100,
+          "gene": "0",
+          "product": "enzyme",
+          "locus_tag": "",
+          "warnings": [],
+          "partial": false,
+          "qualifiers": {},
+          "location": "2000",
+          "translation_source": "translation",
+          "origin_spanning": false
+        },
+        {
+          "id": "b1",
+          "cluster_id": "b",
+          "group_id": "h_a1",
+          "segments": [
+            {
+              "start": 6000,
+              "end": 6300,
+              "strand": 1
+            }
+          ],
+          "cds_length": 300,
+          "strand": 1,
+          "protein": "MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "protein_length": 100,
+          "gene": "1",
+          "product": "enzyme",
+          "locus_tag": "",
+          "warnings": [],
+          "partial": false,
+          "qualifiers": {},
+          "location": "6000",
+          "translation_source": "translation",
+          "origin_spanning": false
+        }
+      ],
+      "source_name": "b.gbk",
+      "accession": "b",
+      "description": "Synthetic test cluster",
+      "topology": "linear",
+      "annotations": {},
+      "warnings": []
+    },
+    {
+      "id": "c",
+      "name": "c",
+      "length": 10000,
+      "cds": [
+        {
+          "id": "c0",
+          "cluster_id": "c",
+          "group_id": "h_a0",
+          "segments": [
+            {
+              "start": 3000,
+              "end": 3300,
+              "strand": 1
+            }
+          ],
+          "cds_length": 300,
+          "strand": 1,
+          "protein": "MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "protein_length": 100,
+          "gene": "0",
+          "product": "enzyme",
+          "locus_tag": "",
+          "warnings": [],
+          "partial": false,
+          "qualifiers": {},
+          "location": "3000",
+          "translation_source": "translation",
+          "origin_spanning": false
+        }
+      ],
+      "source_name": "c.gbk",
+      "accession": "c",
+      "description": "Synthetic test cluster",
+      "topology": "linear",
+      "annotations": {},
+      "warnings": []
+    }
+  ],
+  "analysis": {
+    "identity": 0.3,
+    "coverage": 0.7,
+    "preserve_input": false
+  },
+  "visualization": {
+    "connectors": true,
+    "connector_identity": 0.3,
+    "labels": false
+  },
+  "homolog_groups": [
+    {
+      "id": "h_a0",
+      "members": [
+        "a0",
+        "b0",
+        "c0"
+      ],
+      "generated_color": "#ee560c"
+    },
+    {
+      "id": "h_a1",
+      "members": [
+        "a1",
+        "b1"
+      ],
+      "generated_color": "#1cebfe"
+    }
+  ],
+  "pairwise_hits": [
+    {
+      "query": "a0",
+      "target": "b0",
+      "identity": 0.6,
+      "alignment_length": 90,
+      "query_length": 100,
+      "target_length": 100,
+      "shorter_coverage": 0.9,
+      "bits": 80.0,
+      "evalue": 1e-15,
+      "query_coverage": 0.9,
+      "target_coverage": 0.9
+    },
+    {
+      "query": "b0",
+      "target": "c0",
+      "identity": 0.6,
+      "alignment_length": 90,
+      "query_length": 100,
+      "target_length": 100,
+      "shorter_coverage": 0.9,
+      "bits": 80.0,
+      "evalue": 1e-15,
+      "query_coverage": 0.9,
+      "target_coverage": 0.9
+    },
+    {
+      "query": "a1",
+      "target": "b1",
+      "identity": 0.6,
+      "alignment_length": 90,
+      "query_length": 100,
+      "target_length": 100,
+      "shorter_coverage": 0.9,
+      "bits": 80.0,
+      "evalue": 1e-15,
+      "query_coverage": 0.9,
+      "target_coverage": 0.9
+    }
+  ],
+  "layout": {
+    "order": [
+      "a",
+      "b",
+      "c"
+    ],
+    "rows": {
+      "a": {
+        "orientation": 1,
+        "offset": 0.0
+      },
+      "b": {
+        "orientation": 1,
+        "offset": -1000.0
+      },
+      "c": {
+        "orientation": 1,
+        "offset": -2000.0
+      }
+    }
+  },
+  "color_overrides": {
+    "genes": {},
+    "groups": {}
+  },
+  "fasta_selection": []
+}

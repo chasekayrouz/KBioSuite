@@ -1,0 +1,4 @@
+// Copyright 2019 Global Phasing Ltd.
+//
+// Span - span of array or std::vector.
+// MutableVectorSpan - span of std::vector with insert() and erase()

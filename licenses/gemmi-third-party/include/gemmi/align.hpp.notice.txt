@@ -1,0 +1,3 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Sequence alignment, label_seq_id assignment, structure superposition.

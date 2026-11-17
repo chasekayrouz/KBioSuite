@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="kstack-format" content="Kstack; schema=1; app=<!--KSTACK_VERSION-->">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'">
+<title>Kstack</title>
+<!--KSTACK_STYLE-->
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brandmark" aria-hidden="true"><i></i><i></i><i></i></span><span>Kstack<small id="summary"></small></span></div>
+  <div class="view-controls"><label class="switch"><input id="connectors" type="checkbox"> Connectors</label><label class="threshold">Display ≥ <input id="display-identity" aria-label="Connector display identity" type="number" min="0" max="100" step="1">%</label><label class="switch"><input id="labels" type="checkbox"> Gene labels</label></div>
+  <div class="exports"><button id="export-fasta">Export FASTA <span id="selection-count">0</span></button><button id="export-svg" class="primary">Export SVG</button></div>
+</header>
+<main>
+  <section class="workspace" aria-label="Kstack gene clusters">
+    <div class="figure-heading"><div><span class="eyebrow">GENE CLUSTER COMPARISON</span><h1 id="project-title">Your stack</h1></div><div class="geometry-controls"><label>Width scale <input id="width-scale" aria-label="Width scale" type="number" min="25" max="400" step="5" value="100">%</label><label>Height scale <input id="height-scale" aria-label="Height scale" type="number" min="25" max="400" step="5" value="100">%</label><label>Row spacing <input id="spacing-scale" aria-label="Row spacing" type="number" min="25" max="400" step="5" value="100">%</label><button id="reset-scale" title="Restore width, height, and row spacing to 100%">Reset</button></div><div class="zoom-controls"><button id="zoom-out" aria-label="Zoom out">−</button><span id="zoom-value">100%</span><button id="zoom-in" aria-label="Zoom in">+</button><button id="fit" title="Fit the scaled stack width; keep presentation settings unchanged">Fit stack</button></div></div>
+    <div id="viewport" tabindex="0" aria-label="Stack figure: drag background to pan, scroll to zoom"><div id="scene"><svg id="genes-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none" aria-label="Interactive genes"><g id="connectors-svg" aria-hidden="true" pointer-events="none"></g><g id="gene-rows"></g><g id="scale-svg" pointer-events="none"></g></svg><div id="row-controls"></div></div><div id="tooltip" role="tooltip" hidden></div></div>
+    <footer class="figure-footer"><span id="interaction-hint">Click a gene to inspect · Drag background to pan · Scroll to zoom</span><span id="render-time"></span></footer>
+  </section>
+  <aside id="inspector" aria-label="Gene inspector"><div class="inspector-heading"><span class="eyebrow">GENE INSPECTOR</span><button id="close-inspector" aria-label="Close gene inspector">×</button></div><div id="inspector-content"><div class="empty-inspector"><span class="empty-arrow">→</span><h2>A closer look</h2><p>Select any gene to see its annotations, protein sequence, and homolog group.</p><p>Choose individual proteins or complete clusters for FASTA export.</p></div></div></aside>
+</main>
+<dialog id="export-preview" aria-labelledby="export-preview-title" aria-describedby="export-preview-description">
+  <div class="export-dialog">
+    <header class="export-heading"><div><span class="eyebrow">FIGURE EXPORT</span><h2 id="export-preview-title">SVG export preview</h2><p id="export-preview-description">Adjust this figure without changing your stack. Drag rows left/right to shift or up/down to reorder. Right-click a gene to auto-align its group.</p></div><button id="export-preview-close" aria-label="Close SVG export preview">×</button></header>
+    <div class="export-body">
+      <section class="export-settings" aria-label="Export settings">
+        <h3>Presentation</h3>
+        <div class="export-scales">
+          <label>Width <span><input id="export-width" aria-label="Export width" type="number" min="25" max="400" step="5">%</span></label>
+          <label>Height <span><input id="export-height" aria-label="Export height" type="number" min="25" max="400" step="5">%</span></label>
+          <label>Row spacing <span><input id="export-spacing" aria-label="Export row spacing" type="number" min="25" max="400" step="5">%</span></label>
+        </div>
+        <label class="switch"><input id="export-labels" type="checkbox"> Gene labels</label>
+        <label class="switch"><input id="export-connectors" type="checkbox"> Connectors</label>
+        <label class="export-cutoff">Connector identity ≥ <span><input id="export-identity" aria-label="Export connector identity" type="number" min="0" max="100" step="1">%</span></label>
+        <div class="export-cluster-heading"><h3>Clusters</h3><button id="export-show-all">Show all</button><button id="export-hide-all">Hide all</button></div>
+        <p class="export-help">Check to include. Drag the handle or use ↑ ↓ to reorder.</p>
+        <ol id="export-clusters" aria-label="Export cluster order"></ol>
+      </section>
+      <section class="export-figure" aria-label="SVG figure preview">
+        <div class="export-preview-toolbar"><span id="export-preview-count" role="status"></span><label class="switch"><input id="export-fit" type="checkbox" checked> Fit width</label></div>
+        <div id="export-preview-canvas" tabindex="0" aria-label="Export figure; drag rows to shift or reorder; right-click genes for auto-align"></div>
+      </section>
+    </div>
+    <footer class="export-footer"><button id="export-reset">Reset to stack</button><span id="export-preview-status" role="status" aria-live="polite"></span><button id="export-cancel">Cancel</button><button id="export-save" class="primary">Export SVG…</button></footer>
+  </div>
+</dialog>
+<div id="toast" role="status" hidden></div>
+<!--KSTACK_DATA-->
+<!--KSTACK_SCRIPTS-->
+</body>
+</html>

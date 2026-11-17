@@ -1,0 +1,4 @@
+// Copyright 2019 Global Phasing Ltd.
+//
+// Common options for programs that read MTZ or SF-mmCIF map coefficients
+// and transform them to a map.

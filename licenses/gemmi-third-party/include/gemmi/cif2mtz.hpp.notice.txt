@@ -1,0 +1,3 @@
+// Copyright 2021 Global Phasing Ltd.
+//
+// A class for converting SF-mmCIF to MTZ (merged or unmerged).

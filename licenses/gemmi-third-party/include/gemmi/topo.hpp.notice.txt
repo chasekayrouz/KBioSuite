@@ -1,0 +1,3 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// Topo(logy) - restraints (from a monomer library) applied to a model.

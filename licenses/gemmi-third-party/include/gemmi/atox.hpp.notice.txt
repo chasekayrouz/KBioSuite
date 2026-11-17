@@ -1,0 +1,11 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// Locale-independent functions that convert strings to integers,
+// equivalents of standard isspace and isdigit, and a few helper functions.
+//
+// This file is named similarly to the standard functions atoi() and atof().
+// But the functions here are not meant to be equivalent to the standard
+// library functions. They are locale-independent (a good thing when reading
+// numbers from files). They don't set errno, don't signal overflow and
+// underflow. Due to the limited scope these functions tend to be faster
+// than the standard-library ones.

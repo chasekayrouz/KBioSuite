@@ -1,0 +1,4 @@
+// Copyright 2018 Global Phasing Ltd.
+//
+// Representation of a small molecule or inorganic crystal.
+// Flat list of atom sites. Minimal functionality.

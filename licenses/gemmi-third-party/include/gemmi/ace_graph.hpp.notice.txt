@@ -1,0 +1,3 @@
+// Copyright 2026 Global Phasing Ltd.
+//
+// Shared graph/ring helpers for AceDRG-style ChemComp processing.

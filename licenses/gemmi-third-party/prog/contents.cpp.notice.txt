@@ -1,0 +1,4 @@
+// Copyright 2017 Global Phasing Ltd.
+//
+// This program analyses PDB or mmCIF files, printing similar things
+// as CCP4 RWCONTENTS: weight, Matthews coefficient, etc.

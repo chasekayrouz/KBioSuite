@@ -1,0 +1,3 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Reciprocal space helper functions.

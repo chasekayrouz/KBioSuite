@@ -1,0 +1,3 @@
+// Copyright Global Phasing Ltd.
+//
+// DSSP (Define Secondary Structure of Proteins) implementation.

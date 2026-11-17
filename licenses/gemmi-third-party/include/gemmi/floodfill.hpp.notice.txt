@@ -1,0 +1,4 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// The flood fill (scanline fill) algorithm for Grid.
+// Assumes periodic boundary conditions in the grid and 6-way connectivity.

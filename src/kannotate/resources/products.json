@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "rules": [{
+    "profiles": ["PF00550", "pfam00550", "PP-binding"],
+    "max_query_length": 200,
+    "min_alignment_span": 50,
+    "min_coverage": 0.35,
+    "min_score": 6.0,
+    "product": "phosphopantetheine-binding carrier protein"
+  }]
+}

@@ -1,0 +1,3 @@
+// Based on public domain code from Connelly Barnes:
+// http://barnesc.blogspot.com/2007/02/eigenvectors-of-3x3-symmetric-matrix.html
+// which in turn is based on the public domain Java Matrix library JAMA.

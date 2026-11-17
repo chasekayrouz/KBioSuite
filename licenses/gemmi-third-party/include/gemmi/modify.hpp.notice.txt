@@ -1,0 +1,3 @@
+// Copyright 2017-2021 Global Phasing Ltd.
+//
+// Modify various properties of the model.

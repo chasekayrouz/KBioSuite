@@ -1,0 +1,5 @@
+// Copyright 2020 Global Phasing Ltd.
+//
+// Generating biological assemblies by applying operations
+// from struct Assembly to a Model.
+// Includes chain (re)naming utilities.

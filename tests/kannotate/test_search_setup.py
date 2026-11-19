@@ -72,8 +72,10 @@ def test_checksum_pin_refuses_changed_content(tmp_path):
         fetch(source.as_uri(), tmp_path / "download", sha256="0" * 64)
     assert not (tmp_path / "download").exists()
     spec = specification()
-    assert spec["cdd"]["version"] == "3.21"
-    assert all(len(a["sha256"]) == 64 for e in (spec["pfam"], spec["cdd"]) for a in e["assets"])
+    # Pfam stays pinned to a permanent release; CDD follows NCBI's current release.
+    assert all(len(a["sha256"]) == 64 for a in spec["pfam"]["assets"])
+    assert spec["cdd"]["release_info"].endswith("/cdd/cdd.info")
+    assert not any("sha256" in a for a in spec["cdd"]["assets"])
 
 
 def test_rps_gapped_alignment_coordinates_and_repeated_hsps(tmp_path):

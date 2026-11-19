@@ -7,10 +7,23 @@
     "schema_version": {"const": 1},
     "kannotate_version": {"type": "string"},
     "installed_at": {"type": "string", "format": "date-time"},
-    "specification": {"type": "object", "required": ["version", "assets", "expected_profiles", "database_prefix"]},
+    "specification": {"type": "object", "required": ["assets", "database_prefix"]},
+    "release": {
+      "description": "CDD release read from NCBI's cdd.info with the observed SHA-256 of each downloaded asset",
+      "type": "object",
+      "required": ["version", "profiles", "assets"],
+      "properties": {
+        "version": {"type": "string"},
+        "profiles": {"type": "integer", "minimum": 1},
+        "assets": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+      },
+      "additionalProperties": false
+    },
     "files": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
     "disk_bytes": {"type": "integer", "minimum": 0},
     "executables": {"type": "object", "additionalProperties": {"type": "object", "required": ["path", "version"]}}
   },
+  "if": {"properties": {"specification": {"required": ["release_info"]}}},
+  "then": {"required": ["release"]},
   "additionalProperties": false
 }

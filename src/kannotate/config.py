@@ -35,7 +35,27 @@ def load_config(root: Path | None = None) -> dict:
             config["executables"] = {name: paths[name] for name in config["executables"]}
         except (OSError, KeyError, ValueError) as exc:
             raise RuntimeError(f"Shared resources need attention: {exc}") from exc
+    # Label CDD with the release actually installed at the bound path.
+    cdd = config.get("databases", {}).get("cdd")
+    receipt = Path(cdd["path"]).parent / "installation.json" if cdd else None
+    if receipt and receipt.is_file():
+        cdd["version"] = cdd_release(json.loads(receipt.read_text()))["version"]
     return config
+
+
+def cdd_release(metadata: dict) -> dict:
+    """CDD release recorded in an installation receipt.
+
+    Kannotate 0.6.0 and earlier pinned one release in the specification itself.
+    """
+    try:
+        release = metadata.get("release") or metadata["specification"]
+        return {
+            "version": release["version"],
+            "profiles": int(release.get("profiles", release.get("expected_profiles"))),
+        }
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError("CDD installation record does not name its release") from exc
 
 
 def save_config(config: dict, root: Path):

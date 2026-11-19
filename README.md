@@ -76,9 +76,11 @@ Kannotate runs two standard search programs that you install yourself: **HMMER**
 3. Open **Kannotate**. Under **Local databases**, open **Database setup & location**
    and click **Set up / verify databases**.
 
-Setup downloads Pfam-A 38.2 from EBI and CDD 3.21 from NCBI, checks them against
-pinned checksums, prepares them and runs a public test protein through both. When it
-finishes, the status line reads *ready*. If tools are missing, the status line names
+Setup downloads Pfam-A 38.2 from EBI and NCBI's current CDD release, checks Pfam
+against its pinned checksum and CDD against NCBI's release notes, prepares them and
+runs a public test protein through both. When it finishes, the status line reads
+*ready* and names both releases; results record them too. An installed CDD keeps its
+release when NCBI publishes a newer one. If tools are missing, the status line names
 them.
 
 Kannotate looks for the tools on its `PATH` and in `/opt/homebrew/bin`,
@@ -217,7 +219,7 @@ native tests use XCTest, which the Command Line Tools don't include.
 To update, run `git pull` and then `./scripts/build-install.sh` again. The builder
 installs only from a clean checkout of `main` and refuses to replace a newer
 installed version with an older one. `src/kbiosuite/version.py` is the sole suite
-version source: **0.6.0**.
+version source: **0.6.1**.
 
 A source build also gives command-line versions of the tools (`uv run kblast`,
 `uv run kannotate`, `uv run kstack`, `uv run kmatch`); see the

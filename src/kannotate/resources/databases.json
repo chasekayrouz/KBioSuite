@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "pfam": {
     "version": "38.2",
     "expected_profiles": 30134,
@@ -12,19 +12,16 @@
     }]
   },
   "cdd": {
-    "version": "3.21",
-    "expected_profiles": 62456,
+    "release_info": "https://ftp.ncbi.nlm.nih.gov/pub/mmdb/cdd/cdd.info",
     "database_prefix": "Cdd",
     "assets": [
       {
         "filename": "Cdd_LE.tar.gz",
-        "url": "https://ftp.ncbi.nlm.nih.gov/pub/mmdb/cdd/little_endian/Cdd_LE.tar.gz",
-        "sha256": "f81d2d568a0e017fb10a7e79ce03c14981a44d3fe0a5ba6ee6a2cea1cd021c43"
+        "url": "https://ftp.ncbi.nlm.nih.gov/pub/mmdb/cdd/little_endian/Cdd_LE.tar.gz"
       },
       {
         "filename": "cddid.tbl.gz",
-        "url": "https://ftp.ncbi.nlm.nih.gov/pub/mmdb/cdd/cddid.tbl.gz",
-        "sha256": "852cb4c22f604b38f34c399c2fdad3d737fd15deaa5736c1a632249f0a6f6264"
+        "url": "https://ftp.ncbi.nlm.nih.gov/pub/mmdb/cdd/cddid.tbl.gz"
       }
     ]
   }

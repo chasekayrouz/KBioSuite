@@ -32,7 +32,7 @@ def main(argv=None):
     )
     parser.add_argument("--version", action="version", version=f"Kannotate {__version__}")
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser("setup", help="install and validate the pinned local databases")
+    commands.add_parser("setup", help="install and validate the local Pfam and CDD databases")
     commands.add_parser("status", help="show dependency and database readiness")
     annotate = commands.add_parser("annotate", help="annotate protein FASTA and GenBank files")
     annotate.add_argument("inputs", nargs="+", type=Path)

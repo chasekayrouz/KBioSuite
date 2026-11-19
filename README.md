@@ -79,9 +79,8 @@ Kannotate runs two standard search programs that you install yourself: **HMMER**
 Setup downloads Pfam-A 38.2 from EBI and NCBI's current CDD release, checks Pfam
 against its pinned checksum and CDD against NCBI's release notes, prepares them and
 runs a public test protein through both. When it finishes, the status line reads
-*ready* and names both releases; results record them too. An installed CDD keeps its
-release when NCBI publishes a newer one. If tools are missing, the status line names
-them.
+*ready* and names both releases. An installed CDD keeps its release when NCBI
+publishes a newer one. If tools are missing, the status line names them.
 
 Kannotate looks for the tools on its `PATH` and in `/opt/homebrew/bin`,
 `/usr/local/bin` and `/usr/bin`. Apps opened from Finder don't see a conda

@@ -14,7 +14,7 @@ with its version, source download and retained notice files.
 | Component | License and retained notices |
 | --- | --- |
 | Python runtime | CPython 3.14.10 (python-build-standalone 20261110, arm64 macOS). The upstream `python/licenses/` folder is kept as `cpython/licenses/`, including the licenses of linked libraries |
-| Python packages | Each package's license is kept under `python/` with its `.dist-info` folder. They include Biopython, NumPy, PyHMMER (with HMMER and Easel), PyObjC, pywebview, Flask, requests and their dependencies |
+| Python packages | Each package's license is kept under `python/` with its `.dist-info` folder. They include Biopython, NumPy, PyHMMER (with HMMER and Easel), PyObjC, pywebview, Flask, requests, truststore and their dependencies |
 | Gemmi and certifi | MPL-2.0 (see [Source availability](#source-availability)). Gemmi's bundled third-party notices, including zlib-ng, nanobind and robin-map, are kept separately |
 | MMseqs2 18-8cc5c (in Kstack) | MIT, plus the licenses of the libraries it contains, in `mmseqs2/`. These include tantan (MPL-2.0), Krona (copyright, permission and trademark terms) and LLVM OpenMP 14.0.6, whose full license is kept separately |
 | 3Dmol.js 2.5.5 (in Kmatch) | BSD-3-Clause, with its GLmol, Three.js, jQuery and EDTSurf notices, in `3dmol/`. Its bundled code keeps its own MIT or Zlib licenses: pako 1.0.11 and 2.1.0, upng-js 2.1.0, netcdfjs 3.0.0, iobuffer 5.4.0, mmtf-javascript 1.0.1, and code derived from Mol* and Rendu |

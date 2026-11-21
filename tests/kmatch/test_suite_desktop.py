@@ -407,7 +407,7 @@ class Page:
                 loaded_run=state["run_id"],
                 error="",
                 summary="",
-                pdb_status="PDB details: 0/2 hits available (cached).",
+                pdb_status="PDB details: 0/2 hits available.",
             )
         elif step == "select-top-hit":
             index = state["hit_rankings"]["qtm"][0]

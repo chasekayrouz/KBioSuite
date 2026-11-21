@@ -8,6 +8,8 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from urllib.error import HTTPError
 
+from kbiosuite import tls
+
 
 def digest(path: Path, algorithm="sha256") -> str:
     value = hashlib.new(algorithm)
@@ -29,7 +31,7 @@ def fetch(url: str, path: Path, *, sha256=None, md5=None, workers=8):
     temporary = path.with_name(path.name + ".part")
     request = urllib.request.Request(url, method="HEAD")
     try:
-        with urllib.request.urlopen(request, timeout=60) as response:
+        with tls.urlopen(request, timeout=60) as response:
             size = int(response.headers.get("Content-Length", "0"))
             ranges = response.headers.get("Accept-Ranges") == "bytes"
     except HTTPError as exc:
@@ -42,7 +44,7 @@ def fetch(url: str, path: Path, *, sha256=None, md5=None, workers=8):
             try:
                 req = urllib.request.Request(url, headers={"Range": f"bytes={start}-{end}"})
                 with (
-                    urllib.request.urlopen(req, timeout=120) as response,
+                    tls.urlopen(req, timeout=120) as response,
                     temporary.open("r+b") as out,
                 ):
                     if response.status != 206:
@@ -74,7 +76,7 @@ def fetch(url: str, path: Path, *, sha256=None, md5=None, workers=8):
             for future in futures:
                 future.result()
     else:
-        with urllib.request.urlopen(url, timeout=120) as response, temporary.open("wb") as handle:
+        with tls.urlopen(url, timeout=120) as response, temporary.open("wb") as handle:
             while block := response.read(1024 * 1024):
                 handle.write(block)
     if sha256 and digest(temporary) != sha256 or md5 and digest(temporary, "md5") != md5:

@@ -111,16 +111,17 @@ function renderPdbDetails() {
   $('pdb-status').textContent=job.pdb_details_status || '';
   document.querySelectorAll('.protein-name').forEach(cell=>{
     const data=job.pdb_details?.[cell.dataset.target];
-    cell.textContent=data?.protein_name || (data?.status==='ready'?'Chain name unavailable':data?.status==='unavailable'?'Unavailable':'Loading…');
-    cell.title=data?.protein_name || data?.message || '';
+    cell.textContent=data?.protein_name || (data?.status==='ready'?'Chain name unavailable':data?.retryable?'Not loaded':data?.status==='unavailable'?'Unavailable':'Loading…');
+    cell.title=data?.protein_name || [data?.message,data?.detail].filter(Boolean).join(' ') || '';
   });
   if(selectedHit===null)return;
   const data=job.pdb_details?.[job.hits[selectedHit]?.target];
   $('ligands').replaceChildren();
   $('ligand-status').textContent=data?.status==='ready' ?
-    (data.ligands.length?`Entry-wide annotation · cached ${data.retrieved_utc} · not every ligand necessarily contacts this hit chain.`:'No non-water small-molecule ligands reported in this entry.') :
+    (data.ligands.length?`Entry-wide annotation${data.retrieved_utc?' · cached '+data.retrieved_utc:''} · not every ligand necessarily contacts this hit chain.`:'No non-water small-molecule ligands reported in this entry.') :
     (data?.message || 'Loading public PDB ligand details…');
-  (data?.ligands || []).forEach(ligand=>{const item=document.createElement('li');item.textContent=`${ligand.id} · ${ligand.name}`+(ligand.formula?` · ${ligand.formula}`:'')+` · ${ligand.copies} instance(s)`;$('ligands').append(item);});
+  $('ligand-status').title=data?.detail || '';
+  (data?.ligands || []).forEach(ligand=>{const item=document.createElement('li');item.textContent=`${ligand.id} · ${ligand.name}`+(ligand.formula?` · ${ligand.formula}`:'')+(ligand.copies==null?' · instance count unavailable':` · ${ligand.copies} instance(s)`);$('ligands').append(item);});
 }
 function renderAlignmentExport() {
   const busy = job.busy || exportDialogOpen;

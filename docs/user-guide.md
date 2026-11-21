@@ -460,6 +460,21 @@ for the installation to finish, then click **Install** again.
 again. Kmatch downloads resume where they stopped. Kannotate keeps files it has
 already finished and downloads an interrupted file again from the start.
 
+**Kmatch shows "Not loaded" for protein names.** Kmatch couldn't get the details
+from RCSB or couldn't save them. Select the hit to read the reason for that hit under
+**Small-molecule ligands in this PDB entry**; the line above the table counts the hits
+that didn't load and gives the first reason. For a connection problem, check your
+internet connection and click **Reload details**. Your
+prediction, the hits and the scores are not affected, and the **RCSB** link under
+each hit opens the entry in your browser. If the message mentions a security
+certificate, check that your Mac's date and time are correct. On a managed network,
+ask your administrator whether the network inspects HTTPS traffic.
+
+**Kmatch 0.6.1 or earlier shows "Unavailable" for protein names, with a certificate
+error in the ligand section.** RCSB changed its certificate authority in November
+2026 and those versions can't verify it. Update to 0.6.2 or later. Details that were
+already saved on your Mac still appear.
+
 **A Kblast search waits for a long time.** NCBI queues scripted searches behind
 interactive ones. Keep waiting, cancel and resume later, or
 [use an existing NCBI search](#use-an-existing-ncbi-search).

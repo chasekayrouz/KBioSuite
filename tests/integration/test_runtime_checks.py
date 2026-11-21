@@ -16,22 +16,29 @@ def test_normal_launch_does_not_probe(monkeypatch):
 
     monkeypatch.setattr(checks, "network_check", never)
     monkeypatch.setattr(setup, "install_uv", never)
-    assert checks.dispatch_network_check("Kblast", "requests", []) is None
+    assert checks.dispatch_network_check("Kblast", "requests", never, []) is None
     assert setup.dispatch_uv_check([]) is None
 
 
 def test_network_report_records_failure_and_preserves_previous_evidence(tmp_path, monkeypatch):
-    def failed(stack):
+    def failed(url):
         raise RuntimeError("certificate validation failed")
 
-    monkeypatch.setattr(checks, "network_check", failed)
     report = tmp_path / "report.json"
     args = [checks.NETWORK_FLAG, str(report)]
-    assert checks.dispatch_network_check("Kannotate", "urllib", args) == 1
-    assert json.loads(report.read_text())["passed"] is False
+    probes = {"https://one.example/": lambda url: 200, "https://two.example/": failed}
+    assert checks.dispatch_network_check("Kannotate", "urllib", lambda: probes, args) == 1
+    result = json.loads(report.read_text())
+    # One host failing fails the report, and the host that answered is still recorded.
+    assert result["passed"] is False and result["tls_verified"] is False
+    assert result["endpoints"] == [
+        {"url": "https://one.example/", "passed": True, "http_status": 200},
+        {"url": "https://two.example/", "passed": False,
+         "error": "certificate validation failed", "error_type": "RuntimeError"},
+    ]
     before = report.read_bytes()
     with pytest.raises(FileExistsError):
-        checks.dispatch_network_check("Kannotate", "urllib", args)
+        checks.dispatch_network_check("Kannotate", "urllib", lambda: probes, args)
     assert report.read_bytes() == before
 
 
@@ -39,7 +46,7 @@ def test_network_report_records_failure_and_preserves_previous_evidence(tmp_path
 def test_network_qualification_rejects_certificate_overrides(monkeypatch, variable):
     monkeypatch.setenv(variable, "/example/certificates")
     with pytest.raises(RuntimeError, match="certificate override"):
-        checks.network_check("urllib")
+        checks.network_check("urllib", {checks.PUBLIC_URL: lambda url: 200})
 
 
 def test_uv_check_refuses_existing_home_before_network(tmp_path, monkeypatch):
@@ -70,30 +77,36 @@ def test_uv_check_runs_only_uv_and_records_exact_version(tmp_path, monkeypatch):
     assert len(calls) == 1 and calls[0].home == home
 
 
-def test_third_party_stack_requires_the_entry_points_probe(monkeypatch):
-    with pytest.raises(ValueError, match="Unsupported"):
-        checks.network_check("requests")
+def test_endpoint_report_checks_both_callbacks_and_rejects_302_and_empty_sets():
     seen = []
 
     def head(url):
         seen.append(url)
         return 200
 
-    assert checks.network_check("requests", head) == {
-        "stack": "requests", "url": checks.PUBLIC_URL, "http_status": 200, "tls_verified": True,
+    urls = [checks.PUBLIC_URL, "https://second.example/"]
+    assert checks.network_check("requests", dict.fromkeys(urls, head)) == {
+        "stack": "requests",
+        "endpoints": [{"url": url, "passed": True, "http_status": 200} for url in urls],
+        "tls_verified": True,
     }
-    assert seen == [checks.PUBLIC_URL]
-    with pytest.raises(RuntimeError, match="HTTP 302"):
-        checks.network_check("requests", lambda url: 302)
+    assert seen == urls
+    redirected = checks.network_check("requests", {checks.PUBLIC_URL: lambda url: 302})
+    assert redirected["tls_verified"] is False
+    assert "HTTP 302" in redirected["endpoints"][0]["error"]
+    # No endpoint is no evidence.
+    assert checks.network_check("urllib", {})["tls_verified"] is False
 
 
 def test_dispatch_passes_the_probe_and_records_its_stack(tmp_path):
     report = tmp_path / "report.json"
     status = checks.dispatch_network_check(
-        "Kblast", "requests", [checks.NETWORK_FLAG, str(report)], head=lambda url: 200
+        "Kblast", "requests", lambda: {checks.PUBLIC_URL: lambda url: 200},
+        [checks.NETWORK_FLAG, str(report)],
     )
     assert status == 0
-    assert json.loads(report.read_text())["stack"] == "requests"
+    result = json.loads(report.read_text())
+    assert result["passed"] and result["stack"] == "requests"
 
 
 def test_requests_probe_ignores_environment_and_verifies(monkeypatch):
@@ -134,27 +147,111 @@ def test_requests_probe_ignores_environment_and_verifies(monkeypatch):
     ]
 
 
-def test_kmatch_and_kannotate_probe_their_stdlib_client():
+def test_kmatch_and_kannotate_register_their_rcsb_and_database_probe_hosts():
+    from kannotate import databases
+    from kmatch import pdb_data
+
     packaging = Path(__file__).resolve().parents[2] / "packaging"
-    assert 'dispatch_network_check("Kmatch", "urllib")' in (packaging / "Kmatch.py").read_text()
-    assert 'dispatch_network_check("Kannotate", "urllib")' in (
+    assert 'dispatch_network_check("Kmatch", "urllib", network_probes)' in (
+        packaging / "Kmatch.py"
+    ).read_text()
+    assert 'dispatch_network_check("Kannotate", "urllib", probes)' in (
         packaging / "Kannotate.py"
     ).read_text()
+    # Metadata and coordinates use separate RCSB hosts, so both are listed.
+    assert [url.split("/")[2] for url in pdb_data.network_probes()] == [
+        "data.rcsb.org", "files.rcsb.org",
+    ]
+    assert "1CSP" in next(iter(pdb_data.network_probes()))
+    assert [url.split("/")[2] for url in databases.network_probes()] == [
+        "ftp.ncbi.nlm.nih.gov", "ftp.ebi.ac.uk",
+    ]
 
 
-def test_only_kblast_entry_reaches_requests():
-    """PyInstaller's own import graph (function-level imports included), without freezing."""
+def test_kmatch_metadata_probe_accepts_named_1csp_chain_a_and_rejects_bad_answers(monkeypatch):
+    from kmatch import pdb_data
+
+    answers = []
+
+    class Response:
+        status = 200
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def read(self, limit):
+            return json.dumps(answers.pop()).encode()
+
+    def urlopen(request, *, timeout, direct):
+        assert direct and request.full_url.startswith("https://data.rcsb.org/graphql?")
+        return Response()
+
+    monkeypatch.setattr(pdb_data.tls, "urlopen", urlopen)
+    url, probe = next(iter(pdb_data.network_probes().items()))
+    entity = {
+        "rcsb_polymer_entity": {"pdbx_description": "COLD SHOCK PROTEIN B(CSPB)"},
+        "rcsb_polymer_entity_container_identifiers": {
+            "auth_asym_ids": ["A"], "asym_ids": ["A"], "entity_id": "1",
+        },
+    }
+    def answered(identifier="1CSP", polymers=(entity,), **extra):
+        record = {"rcsb_id": identifier, "struct": {"title": "Cold shock protein"},
+                  "polymer_entities": list(polymers), "nonpolymer_entities": None}
+        return {"data": {"entries": [record]}, **extra}
+
+    answers.append(answered())
+    assert probe(url) == 200
+    refused = [
+        answered(polymers=()),
+        # Another entry with a named chain A, and an answer that also reports an error.
+        answered("2ABC"),
+        answered(errors=[{"message": "failed"}]),
+    ]
+    for answer in refused:
+        answers.append(answer)
+        with pytest.raises(RuntimeError, match="1CSP"):
+            probe(url)
+    # An answer missing a field Kmatch asks for is not a pass either.
+    answers.append({"data": {"entries": [{"rcsb_id": "1CSP", "polymer_entities": [entity]}]}})
+    with pytest.raises(ValueError, match="nonpolymer_entities"):
+        probe(url)
+
+
+def test_only_the_kblast_packaging_entry_reaches_requests_in_the_filtered_import_graph():
+    """Walk PyInstaller's module graph for the three packaging entries, omitting the truststore
+    hook's excluded imports on edges from that package."""
     pytest.importorskip("PyInstaller")
+    import runpy
+
     from PyInstaller.lib.modulegraph.modulegraph import ModuleGraph
 
     root = Path(__file__).resolve().parents[2]
+    excluded = runpy.run_path(str(root / "packaging/hooks/hook-truststore.py"))["excludedimports"]
 
-    def graph(name):
-        found = ModuleGraph(path=[str(root / "src"), *sys.path], excludes=["tkinter", "pytest"])
-        found.add_script(str(root / "packaging" / f"{name}.py"))
-        return found
+    def reached(name):
+        graph = ModuleGraph(path=[str(root / "src"), *sys.path], excludes=["tkinter", "pytest"])
+        pending, seen = [graph.add_script(str(root / "packaging" / f"{name}.py"))], set()
+        while pending:
+            node = pending.pop()
+            if node.identifier in seen:
+                continue
+            seen.add(node.identifier)
+            for target in graph.get_edges(node)[0]:
+                if node.identifier.split(".")[0] == "truststore" and any(
+                    target.identifier == e or target.identifier.startswith(e + ".")
+                    for e in excluded
+                ):
+                    continue
+                pending.append(target)
+        return seen
 
     for name in ("Kannotate", "Kmatch"):
-        reached = graph(name)
-        assert not [m for m in ("requests", "urllib3", "certifi") if reached.find_node(m)], name
-    assert graph("Kblast").find_node("kbiosuite.requests_probe") is not None
+        modules = reached(name)
+        assert not {"requests", "urllib3", "certifi"} & modules, name
+        assert {"kbiosuite.tls", "truststore._macos"} <= modules, name
+    kblast = reached("Kblast")
+    assert {"kbiosuite.requests_probe", "requests", "certifi"} <= kblast
+    assert "truststore" not in kblast

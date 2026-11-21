@@ -218,7 +218,7 @@ native tests use XCTest, which the Command Line Tools don't include.
 To update, run `git pull` and then `./scripts/build-install.sh` again. The builder
 installs only from a clean checkout of `main` and refuses to replace a newer
 installed version with an older one. `src/kbiosuite/version.py` is the sole suite
-version source: **0.6.1**.
+version source: **0.6.2**.
 
 A source build also gives command-line versions of the tools (`uv run kblast`,
 `uv run kannotate`, `uv run kstack`, `uv run kmatch`); see the

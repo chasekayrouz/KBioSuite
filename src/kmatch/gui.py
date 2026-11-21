@@ -216,14 +216,13 @@ class Job:
                 targets = [state["hits"][i]["target"] for i in retained_hit_indices(rankings)]
                 details = load_details(self.config, targets, allow_network, cancel)
                 ready = sum(d["status"] == "ready" for d in details.values())
+                status = f"PDB details: {ready}/{len(details)} hits available."
+                failed = [d["message"] for d in details.values() if d.get("retryable")]
+                if failed:
+                    status += f" {len(failed)} not loaded. {failed[0]}"
                 with self.lock:
                     if self.state["run_id"] == run_id and self.details_cancel is cancel:
-                        self.state.update(
-                            pdb_details=details,
-                            pdb_details_status=(
-                                f"PDB details: {ready}/{len(details)} hits available (cached)."
-                            ),
-                        )
+                        self.state.update(pdb_details=details, pdb_details_status=status)
             except Cancelled:
                 pass
             except Exception as exc:

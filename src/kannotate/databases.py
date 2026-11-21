@@ -6,11 +6,12 @@ import subprocess
 import sys
 import tarfile
 import tempfile
-import urllib.request
 from dataclasses import replace
 from datetime import UTC, datetime
 from importlib.resources import files
 from pathlib import Path
+
+from kbiosuite import tls
 
 from . import __version__
 from .config import cdd_release, default_root, load_config, save_config
@@ -24,6 +25,15 @@ from .search.rpsblast import RpsBlastAdapter, load_descriptions
 
 def specification():
     return json.loads(files("kannotate.resources").joinpath("databases.json").read_text())
+
+
+def network_probes():
+    """Explicit frozen qualification only: HEAD requests to both download hosts."""
+    chosen = specification()
+    return {
+        chosen["cdd"]["release_info"]: tls.head,
+        chosen["pfam"]["assets"][0]["url"]: tls.head,
+    }
 
 
 def disk_usage(directory: Path) -> int:
@@ -46,7 +56,7 @@ def safe_extract(archive: Path, destination: Path):
 def read_release_info(url: str) -> dict:
     """Read NCBI's small cdd.info note naming the release it currently serves."""
     try:
-        with urllib.request.urlopen(url, timeout=60) as response:
+        with tls.urlopen(url, timeout=60) as response:
             text = response.read(64 * 1024).decode("utf-8", "replace")
     except OSError as exc:
         raise RuntimeError(f"Could not reach NCBI for CDD release information: {exc}") from exc
